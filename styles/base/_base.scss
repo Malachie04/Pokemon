@@ -1,0 +1,84 @@
+body{
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.container{
+    width: 1200px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 50px;
+    flex-direction: column;
+}
+
+
+.input-wrapper{
+    width: 70%;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 30px 90px;
+    border-radius: 15px;
+    margin: 15px 0;
+}
+
+
+select{
+    height: 40px;
+    width: 200px;
+    border-radius: 10px;
+    &:focus{
+        border: none;
+        outline: none;
+        
+    }
+}
+
+.input{
+    display: flex;
+    justify-content: center;
+    
+    .inpute{
+        width: 100%;
+        height: 50px;
+        border-bottom-left-radius: 15px;
+        border-top-left-radius: 15px;
+        border: none;
+        padding: 15px;
+        outline: none;
+        
+        &:focus {
+            border: none;
+            outline: none;
+        }
+    }
+    button{
+       border-bottom-right-radius: 15px;
+        border-top-right-radius: 15px; 
+        border: none;
+        padding: 0 20px;
+       
+    }
+}
+
+.imageGit{
+    padding: 15px;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 1rem;
+    img{
+        grid-column: span 3;
+        width: 300PX;
+        height: 300px;
+        cursor: pointer;
+        transition: all 1s ease-in-out;
+        border-radius: 5px;
+        &:hover{
+            scale: (1.05);
+            box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+        }
+    }
+}
+
+.pokemonNoame{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
