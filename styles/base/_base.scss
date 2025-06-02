@@ -82,3 +82,63 @@ select{
     flex-wrap: wrap;
     gap: 1rem;
 }
+a{
+    text-decoration: none;
+    text-transform: capitalize;
+    background-color: #e7a700;
+    padding: 10px 15px;
+    border-radius: 15px;
+    &:hover{
+        background-color: #694c02;
+        color: #fff;
+    }
+}
+
+.pokemon-card{
+    display: flex;
+    margin: 30px;
+}
+
+.photo{
+   display: flex;
+   align-items: center;
+   padding: 0px 50px;
+}
+
+.pokemondetail{
+    background-color: #ffffff;
+    margin-top: 15px;
+    border-radius: 5px;
+}
+
+.type-chevalavier{
+    &:span{
+        margin: 0 5px;
+    }
+    & :first-child{
+        background-color: green;
+        color: #fff;
+        padding: 2px 5px;
+        border-radius: 10px;
+    }
+    & :last-child{
+        background-color: magenta;
+        color: #fff;
+        padding: 2px 5px;
+        border-radius: 10px;
+    }
+}
+
+
+.swiper {
+    border-radius: 10px;
+    
+    width: 600px;
+    height: 300px;
+  }
+
+  .swiper-slide{
+    background-color: brown;
+    padding: 10px;
+    color: white;
+  }

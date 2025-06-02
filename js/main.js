@@ -1,3 +1,4 @@
+
 //Mes selections
 
 const userrequestHTML=document.querySelector('.inpute');
@@ -9,7 +10,7 @@ const displaygitftHTML=document.querySelector('.imageGit');
 const nombreHTML=document.querySelector('.nombre');
 const langage = document.querySelector('.langage');
 
-const pokemonHTML=document.querySelector('.pokemonNoame');
+let pokemonHTML=document.querySelector('.pokemonNoame');
 const pokemonDeHTML=document.querySelector('.pokemondetail');
 
 
@@ -36,27 +37,36 @@ const pokemonDeHTML=document.querySelector('.pokemondetail');
 
 // });
 
-
+let next='', previoux='';
 
 async function displayPokemon() {
-    let rest = await getPokemons(20);
-   
+    let rest = await getPokemons();
+   console.log(rest);
     for(pokemon of rest){
         // console.log(pokemon.name);
+        let aPoken= document.createElement('a');
+        aPoken.classList.add('pokename');
+        let myspan = document.createElement('span');
+        myspan.textContent=pokemon.name;
 
-        pokemonHTML.innerHTML+=`
-            <a href="">
-                <span>${pokemon.name}</sapn>            
-            </a>
-        `;
+        aPoken.append(myspan);
+        pokemonHTML.append(aPoken);
     }
 }
-
 displayPokemon();
+
+
 
 pokemonHTML.addEventListener('click', async (event) => {
     event.preventDefault();
-    let pokemonName = event.target.textContent;
+
+    const clickedPokename = event.target.closest('.pokename');
+    if (!clickedPokename) return;  // sortir si pas sur un pokename
+
+    const span = clickedPokename.querySelector('span');
+    if (!span) return;
+
+    const pokemonName = span.textContent;
 
     if (pokemonName) {
         let data = await getPokemonInformation(pokemonName);
@@ -87,7 +97,8 @@ pokemonHTML.addEventListener('click', async (event) => {
                 <div class="inform">
                     <h2>Nom : ${data.species.name}</h2>
                     <div class="content type">
-                        <span>Type : </span>${typeHTML}
+                        <span>Type : </span>
+                        <span class="type-chevalavier">${typeHTML}</span>
                     </div>
                     <div class="content">
                         <span>Taille :</span>
@@ -106,13 +117,28 @@ pokemonHTML.addEventListener('click', async (event) => {
                 </div>
             </div>
         `;
-    }
+    
+}
 });
 
 
-async function getPokemons(limit) {
-    const url = `https://pokeapi.co/api/v2/pokemon?limit=${limit}`;
+async function getPokemons() {
+    const url = `https://pokeapi.co/api/v2/pokemon`;
 
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+        return data.results; // retourne bien les données ici
+
+    } catch (error) {
+        console.error("Erreur lors du chargement des Pokémon :", error);
+    }
+}
+
+//Get Next pokemon
+
+async function NextPokemons() {
+    const baseurl = `https://pokeapi.co/api/v2/pokemon`;
     try {
         const response = await fetch(url);
         const data = await response.json();
@@ -140,3 +166,8 @@ async function getPokemonInformation(pokemonName) {
     }
 }
 
+const swiper = new Swiper('.swiper', {
+    // Optional parameters
+    direction: 'horizontal',
+    loop: true,
+  });
